@@ -77,7 +77,20 @@ else:
     valor_final = total_pedido - desconto_aplicado
 
 # SELEÇÃO DA FORMA DE PAGAMENTO
-pagamento = int(input("Insira aqui a forma de pagamento, sendo: 1 - Dinheiro, 2 - Pix ou 3 - Cartão"))
+while True:
+        pagamento = int(input("\nForma de pagamento (1 - Dinheiro, 2 - Pix, 3 - Cartão): "))
+        match pagamento:
+            case 1:
+                forma_pagamento = "Dinheiro" # Guarda apenas o texto
+                break
+            case 2:
+                forma_pagamento = "PIX"
+                break
+            case 3:
+                forma_pagamento = "Cartão"
+                break
+            case _:
+                print("Por favor, selecione uma forma de pagamento válida!")
 
 # SAÍDA
 print(f"Pedido de {nome_cliente}:")
@@ -85,15 +98,8 @@ print(f"O valor total do seu pedido foi de R${total_pedido}.")
 print(f"Você recebeu um desconto de {desconto}% na sua compra!")
 print(f"O valor do desconto é de R${desconto_aplicado}.")
 print(f"O valor final da sua compra é de R${valor_final}.")
+print(f"Forma de pagamento escolhida: {forma_pagamento}")
+print("Obrigado pela preferência!")
 
-match pagamento:
-    case 1:
-        forma_pagamento = print("Efetue seu pagamento em Dinheiro!")
-    case 2:
-        forma_pagamento = print("Efetue seu pagamento no PIX!")
-    case 3:
-        forma_pagamento = print("Efetue seu pagamento no Cartão!")
-    case _:
-        print("Por favor, selecione uma forma de pagamento válida!")
 
 
