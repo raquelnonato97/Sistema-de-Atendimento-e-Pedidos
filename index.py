@@ -19,22 +19,22 @@ total_pedido = 0.0
 
 # LAÇO PRINCIPAL DO ATENDIMENTO
 while True: 
-    codigo_prod = int(input("Insira aqui o código do produto desejado: "))
+    codigo_prod = input("Insira aqui o código do produto desejado: ")
 
     # Preço unitário do produto é zerado sempre que um novo produto é adicionado
     preco_unitario = 0.0
 
     # Determina o valor do produto de acordo com o código selecionado
     match codigo_prod:
-        case 100:
+        case "100":
             preco_unitario = 15.00
-        case 200:
+        case "200":
             preco_unitario = 24.00
-        case 300:
+        case "300":
             preco_unitario = 19.00
-        case 400:
+        case "400":
             preco_unitario = 10.00
-        case 500:
+        case "500":
             preco_unitario = 12.00
         case _: # Caso seja inserido um código inválido
             print("Código inválido! Tente novamente.")
@@ -75,15 +75,15 @@ valor_final = total_pedido - desconto_aplicado
 
 # SELEÇÃO DA FORMA DE PAGAMENTO
 while True:
-        pagamento = int(input("\nForma de pagamento (1 - Dinheiro, 2 - Pix, 3 - Cartão): "))
+        pagamento = input("\nForma de pagamento (1 - Dinheiro, 2 - Pix, 3 - Cartão): ")
         match pagamento:
-            case 1:
+            case "1":
                 forma_pagamento = "Dinheiro" # Guarda apenas o texto
                 break
-            case 2:
+            case "2":
                 forma_pagamento = "PIX"
                 break
-            case 3:
+            case "3":
                 forma_pagamento = "Cartão"
                 break
             case _:
