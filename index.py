@@ -6,13 +6,16 @@ nome_cliente = input("Insira o seu nome para que possamos te chamar quando o ped
 
 # APRESENTAÇÃO DO CARDÁPIO
 print(f"Bem vinda(o) {nome_cliente}! A seguir veja os produtos disponíveis no nosso cardápio:")
-print("\n--- CARDÁPIO ---")
-print("CÓDIGO -- PRODUTO -- PREÇO (R$)")
-print(" 100 -- CACHORRO QUENTE -- R$15,00")
-print(" 200 -- HAMBÚRGUER      -- R$24,00")
-print(" 300 -- BATATA FRITA    -- R$19,00")
-print(" 400 -- REFRIGERANTE    -- R$10,00")
-print(" 500 -- SUCO NATURAL    -- R$12,00")
+print("-" * 43)
+print("                 CARDÁPIO")
+print("-" * 43)
+print(" CÓDIGO -- PRODUTO         -- PREÇO (R$)")
+print("  100   -- CACHORRO QUENTE -- R$ 15,00")
+print("  200   -- HAMBÚRGUER      -- R$ 24,00")
+print("  300   -- BATATA FRITA    -- R$ 19,00")
+print("  400   -- REFRIGERANTE    -- R$ 10,00")
+print("  500   -- SUCO NATURAL    -- R$ 12,00")
+print("-" * 43)
 
 # ACUMULADOR DO VALOR TOTAL DE PEDIDOS
 total_pedido = 0.0
@@ -90,6 +93,7 @@ while True:
                 print("Por favor, selecione uma forma de pagamento válida!")
 
 # SAÍDA
+print("-" * 43)
 print(f"Pedido de {nome_cliente}:")
 print(f"O valor total do seu pedido foi de R${total_pedido}.")
 print(f"Você recebeu um desconto de {desconto}% na sua compra!")
@@ -97,6 +101,7 @@ print(f"O valor do desconto é de R${desconto_aplicado}.")
 print(f"O valor final da sua compra é de R${valor_final}.")
 print(f"Forma de pagamento escolhida: {forma_pagamento}")
 print("Obrigado pela preferência!")
+print("-" * 43)
 
 
 
