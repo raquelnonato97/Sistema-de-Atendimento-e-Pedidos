@@ -63,18 +63,15 @@ while True:
 # CÁLCULO DE DESCONTO
 if total_pedido < 50.00:
     desconto = 0
-    desconto_aplicado = total_pedido * 0
-    valor_final = total_pedido - desconto_aplicado
 
 elif total_pedido >= 50.00 and total_pedido < 100.00:
     desconto = 5
-    desconto_aplicado = total_pedido * 0.05
-    valor_final = total_pedido - desconto_aplicado
 
 else:
     desconto = 10
-    desconto_aplicado = total_pedido * 0.10
-    valor_final = total_pedido - desconto_aplicado
+
+desconto_aplicado = total_pedido * desconto / 100
+valor_final = total_pedido - desconto_aplicado
 
 # SELEÇÃO DA FORMA DE PAGAMENTO
 while True:
