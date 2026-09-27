@@ -69,6 +69,8 @@ def iniciar_atendimento():
         preco_unitario = obter_preco()
             
         while True:
+            mostrar_cardapio()
+
             quant_prod = int(input("Insira aqui a quantidade de produtos desejado: "))
             if quant_prod > 0:
                 break
