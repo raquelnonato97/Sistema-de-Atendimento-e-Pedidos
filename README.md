@@ -23,3 +23,11 @@ O sistema recebe a identificação do cliente, apresenta um cardápio interativo
 
 * **Gestão de Pagamento:** Validação e registro da forma de pagamento escolhida (Dinheiro, PIX ou Cartão).
 
+## Instruções Necessárias para Executar o Programa
+1. Certifique-se de ter o **Python** instalado no seu computador.
+2. Acesse o repositório oficial do projeto no GitHub: [https://github.com/raquelnonato97/Sistema-de-Atendimento-e-Pedidos]
+3. Baixe ou clone o repositório contendo o arquivo fonte `index.py`.
+4. Abra o seu editor de código de preferência (como o **VS Code**) ou o terminal do seu sistema operacional na pasta onde o arquivo está salvo.
+5. Execute o programa digitando o seguinte comando no terminal:
+   ```bash
+   python index.py
