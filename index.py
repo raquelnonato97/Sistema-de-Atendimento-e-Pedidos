@@ -1,107 +1,106 @@
-# APRESENTAÇÃO
-print("\n--- BEM VINDO A LANCHONETE DO BONITÃO ---")
+# Função 1: Responsável apenas por exibir o cardápio na tela
+def mostrar_cardapio():
+    print("-" * 43)
+    print("                CARDÁPIO")
+    print("-" * 43)
+    print(" CÓDIGO -- PRODUTO         -- PREÇO (R$)")
+    print("  100   -- CACHORRO QUENTE -- R$ 15,00")
+    print("  200   -- HAMBÚRGUER      -- R$ 24,00")
+    print("  300   -- BATATA FRITA    -- R$ 19,00")
+    print("  400   -- REFRIGERANTE    -- R$ 10,00")
+    print("  500   -- SUCO NATURAL    -- R$ 12,00")
+    print("-" * 43)
 
-# ENTRADA NOME DO CLIENTE
-nome_cliente = input("Insira o seu nome para que possamos te chamar quando o pedido estiver pronto: ")
-
-# APRESENTAÇÃO DO CARDÁPIO
-print(f"Bem vinda(o) {nome_cliente}! A seguir veja os produtos disponíveis no nosso cardápio:")
-print("-" * 43)
-print("                 CARDÁPIO")
-print("-" * 43)
-print(" CÓDIGO -- PRODUTO         -- PREÇO (R$)")
-print("  100   -- CACHORRO QUENTE -- R$ 15,00")
-print("  200   -- HAMBÚRGUER      -- R$ 24,00")
-print("  300   -- BATATA FRITA    -- R$ 19,00")
-print("  400   -- REFRIGERANTE    -- R$ 10,00")
-print("  500   -- SUCO NATURAL    -- R$ 12,00")
-print("-" * 43)
-
-# ACUMULADOR DO VALOR TOTAL DE PEDIDOS
-total_pedido = 0.0
-
-# LAÇO PRINCIPAL DO ATENDIMENTO
-while True: 
-    codigo_prod = input("Insira aqui o código do produto desejado: ")
-
-    # Preço unitário do produto é zerado sempre que um novo produto é adicionado
-    preco_unitario = 0.0
-
-    # Determina o valor do produto de acordo com o código selecionado
+# Função 2: Recebe o código digitado e devolve o preço unitário
+def obter_preco():
+    codigo_prod = input("\nInsira aqui o código do produto desejado: ")
+        
     match codigo_prod:
         case "100":
-            preco_unitario = 15.00
+            return 15.00
         case "200":
-            preco_unitario = 24.00
+            return 24.00
         case "300":
-            preco_unitario = 19.00
+            return 19.00
         case "400":
-            preco_unitario = 10.00
+            return 10.00
         case "500":
-            preco_unitario = 12.00
-        case _: # Caso seja inserido um código inválido
+            return 12.00
+        case _:
+            # Se for digitado um código inválido, é exibido uma mensagem de erro e é chamada a função novamente
             print("Código inválido! Tente novamente.")
-            continue # retorna o sistema para a primeira linha do While True
+            return obter_preco() 
 
-    # Laço secundário para a escolha de quantidades dos produtos
+# Função 3: Avalia o total do pedido e devolve o percentual de desconto
+def obter_desconto(total_pedido):
+    if total_pedido < 50.00:
+        return 0
+    elif total_pedido >= 50.00 and total_pedido < 100.00:
+        return 5
+    else:
+        return 10
+
+# Função 4: Prende o usuário no laço até escolher uma forma válida e devolve o texto
+def obter_pagamento():
     while True:
-        quant_prod = int(input("Insira aqui a quantidade de produtos desejado: "))
-        if quant_prod > 0:
-            break
-        else:
-            print("Erro: Selecione uma quantidade maior que zero!")
-
-    # CÁLCULOS
-    total_item = preco_unitario * quant_prod # Calcula o total de cada item
-    total_pedido = total_pedido + total_item # Guarda no acumulador o valor total de cada item
-    print(f"Adicionado ao carrinho! Subtotal do item: R${total_item:.2f}")
-
-    # Verifica se o cliente deseja mais itens 
-    novo_pedido = input("Deseja pedir algo mais? (S/N): ").upper()
-
-    # Caso o cliente não queira acrescentar mais nada quebra o loop
-    if novo_pedido == "N" or novo_pedido == "NÃO" or novo_pedido == "NAO":
-        break
-
-# CÁLCULO DE DESCONTO
-if total_pedido < 50.00:
-    desconto = 0
-
-elif total_pedido >= 50.00 and total_pedido < 100.00:
-    desconto = 5
-
-else:
-    desconto = 10
-
-desconto_aplicado = total_pedido * desconto / 100
-valor_final = total_pedido - desconto_aplicado
-
-# SELEÇÃO DA FORMA DE PAGAMENTO
-while True:
         pagamento = input("\nForma de pagamento (1 - Dinheiro, 2 - Pix, 3 - Cartão): ")
         match pagamento:
             case "1":
-                forma_pagamento = "Dinheiro" # Guarda apenas o texto
-                break
+                return "Dinheiro"
             case "2":
-                forma_pagamento = "PIX"
-                break
+                return "PIX"
             case "3":
-                forma_pagamento = "Cartão"
-                break
+                return "Cartão"
             case _:
                 print("Por favor, selecione uma forma de pagamento válida!")
 
-# SAÍDA
-print("-" * 43)
-print(f"Pedido de {nome_cliente}:")
-print(f"O valor total do seu pedido foi de R${total_pedido}.")
-print(f"Você recebeu um desconto de {desconto}% na sua compra!")
-print(f"O valor do desconto é de R${desconto_aplicado}.")
-print(f"O valor final da sua compra é de R${valor_final}.")
-print(f"Forma de pagamento escolhida: {forma_pagamento}")
-print("Obrigado pela preferência!")
-print("-" * 43)
+# Função 5 (Principal): Controla todo o fluxo do sistema chamando as funções acima
+def iniciar_atendimento():
+    print("\n--- BEM VINDO A LANCHONETE DO BONITÃO ---")
+    nome_cliente = input("Insira o seu nome para que possamos te chamar quando o pedido estiver pronto: ")
+    
+    print(f"\nBem vinda(o) {nome_cliente}! A seguir veja os produtos disponíveis no nosso cardápio:")
+    
+    mostrar_cardapio()
+    
+    total_pedido = 0.0
+    
+    while True: 
+        preco_unitario = obter_preco()
+            
+        while True:
+            quant_prod = int(input("Insira aqui a quantidade de produtos desejado: "))
+            if quant_prod > 0:
+                break
+            else:
+                print("Erro: Selecione uma quantidade maior que zero!")
+                
+        total_item = preco_unitario * quant_prod 
+        total_pedido = total_pedido + total_item 
+        print(f"Adicionado ao carrinho! Subtotal do item: R${total_item:.2f}")
+        
+        novo_pedido = input("Deseja pedir algo mais? (S/N): ").upper()
+        if novo_pedido == "N" or novo_pedido == "NÃO" or novo_pedido == "NAO":
+            break
+            
+    # Chama a função para descobrir a porcentagem de desconto
+    desconto = obter_desconto(total_pedido)
+    
+    desconto_aplicado = total_pedido * desconto / 100
+    valor_final = total_pedido - desconto_aplicado
+    
+    # Chama a função que gerencia a escolha do pagamento
+    forma_pagamento = obter_pagamento()
+    
+    print("\n" + "-" * 43)
+    print(f"Pedido de {nome_cliente}:")
+    print(f"O valor total do seu pedido foi de R${total_pedido:.2f}.")
+    print(f"Você recebeu um desconto de {desconto}% na sua compra!")
+    print(f"O valor do desconto é de R${desconto_aplicado:.2f}.")
+    print(f"O valor final da sua compra é de R${valor_final:.2f}.")
+    print(f"Forma de pagamento escolhida: {forma_pagamento}")
+    print("Obrigado pela preferência!")
+    print("-" * 43)
 
-
-
+# Executa o programa
+iniciar_atendimento()
