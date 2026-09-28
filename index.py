@@ -69,13 +69,18 @@ def iniciar_atendimento():
         preco_unitario = obter_preco()
             
         while True:
+            quant_str = input("Insira aqui a quantidade de produtos desejado: ")
             
-            quant_prod = int(input("Insira aqui a quantidade de produtos desejado: "))
-            if quant_prod > 0:
-                break
+            # Verifica se o que foi digitado contém apenas números e não está vazio
+            if quant_str.isdigit():
+                quant_prod = int(quant_str)
+                if quant_prod > 0:
+                    break
+                else:
+                    print("Erro: Selecione uma quantidade maior que zero!")
             else:
-                print("Erro: Selecione uma quantidade maior que zero!")
-                
+                print("Erro: Digite apenas números inteiros válidos!")
+                    
         total_item = preco_unitario * quant_prod 
         total_pedido = total_pedido + total_item 
         print(f"Adicionado ao carrinho! Subtotal do item: R${total_item:.2f}")
@@ -85,25 +90,25 @@ def iniciar_atendimento():
             break
         else:
             mostrar_cardapio()
-            
-    # Chama a função para descobrir a porcentagem de desconto
-    desconto = obter_desconto(total_pedido)
-    
-    desconto_aplicado = total_pedido * desconto / 100
-    valor_final = total_pedido - desconto_aplicado
-    
-    # Chama a função que gerencia a escolha do pagamento
-    forma_pagamento = obter_pagamento()
-    
-    print("\n" + "-" * 43)
-    print(f"Pedido de {nome_cliente}:")
-    print(f"O valor total do seu pedido foi de R${total_pedido:.2f}.")
-    print(f"Você recebeu um desconto de {desconto}% na sua compra!")
-    print(f"O valor do desconto é de R${desconto_aplicado:.2f}.")
-    print(f"O valor final da sua compra é de R${valor_final:.2f}.")
-    print(f"Forma de pagamento escolhida: {forma_pagamento}")
-    print("Obrigado pela preferência!")
-    print("-" * 43)
+                
+        # Chama a função para descobrir a porcentagem de desconto
+        desconto = obter_desconto(total_pedido)
+        
+        desconto_aplicado = total_pedido * desconto / 100
+        valor_final = total_pedido - desconto_aplicado
+        
+        # Chama a função que gerencia a escolha do pagamento
+        forma_pagamento = obter_pagamento()
+        
+        print("\n" + "-" * 43)
+        print(f"Pedido de {nome_cliente}:")
+        print(f"O valor total do seu pedido foi de R${total_pedido:.2f}.")
+        print(f"Você recebeu um desconto de {desconto}% na sua compra!")
+        print(f"O valor do desconto é de R${desconto_aplicado:.2f}.")
+        print(f"O valor final da sua compra é de R${valor_final:.2f}.")
+        print(f"Forma de pagamento escolhida: {forma_pagamento}")
+        print("Obrigado pela preferência!")
+        print("-" * 43)
 
 # Executa o programa
 iniciar_atendimento()
