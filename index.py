@@ -69,8 +69,7 @@ def iniciar_atendimento():
         preco_unitario = obter_preco()
             
         while True:
-            mostrar_cardapio()
-
+            
             quant_prod = int(input("Insira aqui a quantidade de produtos desejado: "))
             if quant_prod > 0:
                 break
@@ -84,6 +83,8 @@ def iniciar_atendimento():
         novo_pedido = input("Deseja pedir algo mais? (S/N): ").upper()
         if novo_pedido == "N" or novo_pedido == "NÃO" or novo_pedido == "NAO":
             break
+        else:
+            mostrar_cardapio()
             
     # Chama a função para descobrir a porcentagem de desconto
     desconto = obter_desconto(total_pedido)
