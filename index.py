@@ -91,24 +91,24 @@ def iniciar_atendimento():
         else:
             mostrar_cardapio()
                 
-        # Chama a função para descobrir a porcentagem de desconto
-        desconto = obter_desconto(total_pedido)
-        
-        desconto_aplicado = total_pedido * desconto / 100
-        valor_final = total_pedido - desconto_aplicado
-        
-        # Chama a função que gerencia a escolha do pagamento
-        forma_pagamento = obter_pagamento()
-        
-        print("\n" + "-" * 43)
-        print(f"Pedido de {nome_cliente}:")
-        print(f"O valor total do seu pedido foi de R${total_pedido:.2f}.")
-        print(f"Você recebeu um desconto de {desconto}% na sua compra!")
-        print(f"O valor do desconto é de R${desconto_aplicado:.2f}.")
-        print(f"O valor final da sua compra é de R${valor_final:.2f}.")
-        print(f"Forma de pagamento escolhida: {forma_pagamento}")
-        print("Obrigado pela preferência!")
-        print("-" * 43)
+    # Chama a função para descobrir a porcentagem de desconto
+    desconto = obter_desconto(total_pedido)
+    
+    desconto_aplicado = total_pedido * desconto / 100
+    valor_final = total_pedido - desconto_aplicado
+    
+    # Chama a função que gerencia a escolha do pagamento
+    forma_pagamento = obter_pagamento()
+    
+    print("\n" + "-" * 43)
+    print(f"Pedido de {nome_cliente}:")
+    print(f"O valor total do seu pedido foi de R${total_pedido:.2f}.")
+    print(f"Você recebeu um desconto de {desconto}% na sua compra!")
+    print(f"O valor do desconto é de R${desconto_aplicado:.2f}.")
+    print(f"O valor final da sua compra é de R${valor_final:.2f}.")
+    print(f"Forma de pagamento escolhida: {forma_pagamento}")
+    print("Obrigado pela preferência!")
+    print("-" * 43)
 
 # Executa o programa
 iniciar_atendimento()
