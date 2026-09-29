@@ -57,7 +57,12 @@ def obter_pagamento():
 # Função 5 (Principal): Controla todo o fluxo do sistema chamando as funções acima
 def iniciar_atendimento():
     print("\n--- BEM VINDO A LANCHONETE DO BONITÃO ---")
-    nome_cliente = input("Insira o seu nome para que possamos te chamar quando o pedido estiver pronto: ")
+    while True:
+            nome_cliente = input("Insira o seu nome para que possamos te chamar quando o pedido estiver pronto: ").strip()
+            if nome_cliente != "":
+                break
+            else:
+                print("Erro: O nome não pode ficar em branco!")
     
     print(f"\nBem vinda(o) {nome_cliente}! A seguir veja os produtos disponíveis no nosso cardápio:")
     
